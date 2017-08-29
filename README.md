@@ -1,2 +1,2 @@
-kata/romans-numerals
+kata/roman-numerals
 ========
