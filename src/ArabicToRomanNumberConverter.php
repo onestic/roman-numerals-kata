@@ -6,17 +6,30 @@ class ArabicToRomanNumberConverter
 {
     protected $baseNumbers;
 
+
+
+
     public function __construct()
     {
         $this->baseNumbers = array(
             1  => 'I',
             5  => 'V',
-            10 => 'X'
+            10 => 'X',
+            50 => 'L'
         );
     }
 
     public function transform($number)
     {
+
+
+        if ($number)
+
+        if ($number > 39) {
+            $baseNumber = 50;
+            return $this->getConcatenatedNumberWithNumberBody($number, $baseNumber);
+        }
+
         if ($number > 8) {
             $baseNumber = 10;
             return $this->getConcatenatedNumberWithNumberBody($number, $baseNumber);
@@ -60,12 +73,15 @@ class ArabicToRomanNumberConverter
         if ($number == $baseNumber) {
             return $numberBody;
         } else if ($number > $baseNumber) {
-            if(($number - $baseNumber) > 3){
+            if (($number - $baseNumber) > 3) {
                 return $numberBody . $this->transform($number - $baseNumber);
             }
             return $numberBody . $this->getConcatenate($number - $baseNumber);
         }
 
+        if (($baseNumber - $number) == 10) {
+            return $this->baseNumbers[10] . $numberBody;
+        }
 
 
         return $this->baseNumbers[1] . $numberBody;
@@ -73,8 +89,5 @@ class ArabicToRomanNumberConverter
 
 
 
-    public function a(){
 
-
-    }
 }

@@ -39,7 +39,24 @@ class ArabicToRomanNumberConverterTest extends \PHPUnit_Framework_TestCase
             [11, 'XI'],
             [12, 'XII'],
             [13, 'XIII'],
-            [14, 'XIV']
+            [14, 'XIV'],
+            [15, 'XV'],
+            [16, 'XVI'],
+            [17, 'XVII'],
+            [18, 'XVIII'],
+            [19, 'XIX'],
+            [20, 'XX'],
+            [30, 'XXX'],
+            [31, 'XXXI'],
+            [32, 'XXXII'],
+            [33, 'XXXIII'],
+            [34, 'XXXIV'],
+            [35, 'XXXV'],
+            [39, 'XXXIX'],
+            [40, 'XL'],
+            [41, 'XLI'],
+
+
         ];
     }
 }
