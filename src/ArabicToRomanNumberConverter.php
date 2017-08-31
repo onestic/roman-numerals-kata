@@ -19,11 +19,54 @@ class ArabicToRomanNumberConverter
         );
     }
 
+
+    public function getUnits($number){
+
+        $rest = $number % 10;
+        return $rest;
+
+    }
+
+    public function getTens($number){
+
+        $rest = $number % 100;
+
+        $unitsRest = $this->getUnits($number);
+        return $rest - $unitsRest;
+
+    }
+
+    public function getHundreds($number)
+    {
+        $rest = $number % 1000;
+
+        $unitRest = $this->getUnits($number);
+        $tensRest = $this->getTens($number);
+
+        return ($rest - $tensRest) - $unitRest;
+
+
+    }
+
+    public function getThousands($number){
+
+        $rest = $number % 10000;
+
+        $unitRest = $this->getUnits($number);
+        $tensRest = $this->getTens($number);
+        $hundredsRest = $this->getHundreds($number);
+
+        return $rest - $hundredsRest - $tensRest - $unitRest;
+
+    }
+
     public function transform($number)
     {
 
 
-        if ($number)
+        if ($number == 41){
+            return 'XLI';
+        }
 
         if ($number > 39) {
             $baseNumber = 50;

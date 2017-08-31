@@ -15,6 +15,100 @@ class ArabicToRomanNumberConverterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @dataProvider numberUnitsProvider
+     */
+    public function returnUnitsFromNumber($number, $units){
+
+        $result = $this->numberConverter->getUnits($number);
+        $this->assertEquals($result, $units);
+
+    }
+
+
+    /**
+     * @test
+     * @dataProvider numberTensProvider
+     */
+    public function returnTensFromNumber($number, $units){
+
+        $result = $this->numberConverter->getTens($number);
+        $this->assertEquals($result, $units);
+
+    }
+
+
+    /**
+     * @test
+     * @dataProvider numberHundredProvider
+     */
+    public function returnHundredFromNumber($number, $units)
+    {
+        $result = $this->numberConverter->getHundreds($number);
+        $this->assertEquals($result, $units);
+    }
+
+
+
+    /**
+     * @test
+     * @dataProvider numberThousandProvider
+     */
+    public function returnThousandFromNumber($number, $units)
+    {
+        $result = $this->numberConverter->getThousands($number);
+        $this->assertEquals($result, $units);
+    }
+
+    public function numberUnitsProvider()
+    {
+        return [
+            [10, 0],
+            [1, 1],
+            [11, 1],
+            [23, 3],
+            [104, 4],
+            [1026, 6],
+        ];
+
+    }
+
+    public function numberTensProvider()
+    {
+        return [
+            [10, 10],
+            [435, 30],
+            [11, 10],
+            [1123, 20]
+        ];
+    }
+
+    public function numberHundredProvider()
+    {
+        return [
+            [234, 200],
+            [435, 400],
+            [11, 0],
+            [1123, 100],
+            [100, 100],
+            [0,0]
+        ];
+    }
+
+    public function numberThousandProvider()
+    {
+        return [
+            [1234, 1000],
+            [435, 0],
+            [11, 0],
+            [2123, 2000],
+            [100, 0],
+            [1000,1000]
+        ];
+    }
+
+
+    /**
+     * @test
      * @dataProvider validNumbersProvider
      */
     public function convertNumber($arabicNumber, $romanNumber)
