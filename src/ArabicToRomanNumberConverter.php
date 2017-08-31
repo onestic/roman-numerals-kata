@@ -60,9 +60,21 @@ class ArabicToRomanNumberConverter
         if ($number == $baseNumber) {
             return $numberBody;
         } else if ($number > $baseNumber) {
+            if(($number - $baseNumber) > 3){
+                return $numberBody . $this->transform($number - $baseNumber);
+            }
             return $numberBody . $this->getConcatenate($number - $baseNumber);
         }
 
+
+
         return $this->baseNumbers[1] . $numberBody;
+    }
+
+
+
+    public function a(){
+
+
     }
 }
